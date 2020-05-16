@@ -5,12 +5,17 @@
  */
 package com.mycompany.introducaojunit;
 
+import java.util.Objects;
+
 /**
  *
  * @author kassio
  */
 public class MathUnit {
     public static int mdc(int a, int b){
+        a = Math.abs(a);
+        b = Math.abs(b);
+        
         final int maior = Math.max(a, b);
         b = Math.min(a, b);
         a = maior ; 
@@ -42,13 +47,18 @@ public class MathUnit {
 //        return -1 ; 
 //    }
 
-    public static int mdc3(int a, int b, int c){
-        if(b > 0 && a % b == 0){
-            if(c > 0 && b % c == 0)
-                return c;
-        } 
-
-        return -1;
+    public static int mdc(int ...valores){
+        Objects.requireNonNull(valores, "O paramentro não pode ser nulo!");
+        
+        if(valores.length == 0){
+            throw new IllegalArgumentException("É preciso indicar ao menos um valor para calcular o mdc");
+        }
+        int a = valores[0];
+        for (int b : valores) {
+            a = mdc(a,b);
+        }
+        
+        return a;
     }
 
 }
