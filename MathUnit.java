@@ -32,7 +32,7 @@ public class MathUnit {
             return 1 ;
         }
         
-    return -1;    
+    return mdc( a-b, b);  
     }
 //    public static int mdcPrimo(int p, int a){
 //
